@@ -1,0 +1,120 @@
+:root {
+    --bg: #050505;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent: #0071e3;
+    --text-main: #f5f5f7;
+    --text-dim: #86868b;
+}
+
+.portfolio-container {
+    background-color: var(--bg);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+/* --- Liquid Mesh Background --- */
+.liquid-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    background: 
+        radial-gradient(circle at 0% 0%, #1d1d1f 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, #001d3d 0%, transparent 50%);
+}
+
+.blob {
+    position: absolute;
+    width: 500px; height: 500px;
+    background: linear-gradient(135deg, #0071e3 0%, #42a5f5 100%);
+    filter: blur(120px);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: move 20s infinite alternate;
+}
+
+@keyframes move {
+    from { transform: translate(-10%, -10%) scale(1); }
+    to { transform: translate(20%, 20%) scale(1.2); }
+}
+
+/* --- Navigation --- */
+.nav-island {
+    position: fixed;
+    top: 20px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    padding: 10px 25px;
+    border-radius: 40px;
+    display: flex; gap: 20px;
+}
+
+.nav-island a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.nav-island a:hover { opacity: 1; color: var(--accent); }
+
+/* --- Bento Grid --- */
+.wrapper {
+    max-width: 1100px;
+    margin: 100px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.1s ease-out;
+}
+
+/* Section Spans */
+.about-card { grid-column: span 3; display: flex; align-items: center; gap: 30px; }
+.skills-card { grid-column: span 1; }
+.projects-card { grid-column: span 4; }
+.reflection-card { grid-column: span 4; }
+
+.photo-circle { 
+    width: 120px; height: 120px; 
+    border-radius: 50%; 
+    background: #222; 
+    border: 1px solid var(--glass-border); 
+    flex-shrink: 0; 
+    overflow: hidden;
+}
+
+.tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 50px; font-size: 13px; border: 1px solid var(--glass-border); }
+
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.project-box { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 20px; border: 1px solid var(--glass-border); }
+
+.reflection-q { color: var(--accent); font-weight: 600; margin-top: 20px; display: block; }
+.reflection-a { color: var(--text-dim); margin-bottom: 5px; display: block; }
+
+@media (max-width: 850px) {
+    .wrapper { grid-template-columns: 1fr; }
+    .about-card, .skills-card, .projects-card, .reflection-card { grid-column: span 1; }
+    .about-card { flex-direction: column; text-align: center; }
+    .project-grid { grid-template-columns: 1fr; }
+}
