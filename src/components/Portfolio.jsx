@@ -73,7 +73,7 @@ const Portfolio = () => {
             />
           </div>
           <div>
-            <h1>Jerico Corporal Soriano</h1>
+            <h1>Jerico Soriano Corporal</h1>
             <p>A BSIT student focused on creating fluid, aesthetic digital experiences and integrating practical AI solutions.</p>
             <div className="tag-group">
               <span className="tag">🏆 Accomplishment: OMSC Mamburao Library System</span>
